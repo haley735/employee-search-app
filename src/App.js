@@ -16,7 +16,7 @@ class App extends Component {
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="" target="_blank">
-              <img src={logo} width="30" height="30" />
+              <img src={logo} width="30" height="30" alt="React Logo"/>
             </a>
             <Link to="/" className="navbar-brand">Employee Search App</Link>
             <div className="collpase navbar-collapse">
