@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class CreateEmployee extends Component {
 
     constructor(props) {
         super(props);
 
-        this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
-        this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
-        this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
+        this.onChangeFirstName = this.onChangeFirstName.bind(this);
+        this.onChangeLastName = this.onChangeLastName.bind(this);
+        this.onChangeDepartment = this.onChangeDepartment.bind(this);
+        this.onChangeJobTitle = this.onChangeJobTitle.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -50,6 +52,16 @@ export default class CreateEmployee extends Component {
         console.log(`Employee Last Name: ${this.state.last_name}`);
         console.log(`Employee Department: ${this.state.department}`);
         console.log(`Employee Job Title: ${this.state.job_title}`);
+
+        const newEmployee = {
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            department: this.state.department,
+            job_title: this.state.job_title
+        };
+
+        axios.post('http://localhost:4000/employees/add', newEmployee)
+            .then(res => console.log(res.data));
         
         this.setState({
             first_name: '',
@@ -116,7 +128,15 @@ export default class CreateEmployee extends Component {
                             <label className="form-check-label">Engineering</label>
                         </div>
                     </div>
-
+                    <div className="form-group">
+                        <label>Job Title: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.job_title}
+                                onChange={this.onChangeJobTitle}
+                                />
+                    </div>
                     <div className="form-group">
                         <input type="submit" value="Create Employee" className="btn btn-primary" />
                     </div>
