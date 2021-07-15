@@ -69,6 +69,8 @@ export default class CreateEmployee extends Component {
             department: '',
             job_title: ''
         })
+
+        this.props.history.push('/');
     }
 
     render() {
