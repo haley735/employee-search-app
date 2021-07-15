@@ -50,7 +50,7 @@ employeeRoutes.route('/add').post(function(req, res) {
 employeeRoutes.route('/update/:id').post(function(req, res) {
     Employee.findById(req.params.id, function(err, employee) {
         if (!employee)
-            res.status(404).send("data is not found");
+            res.status(404).send("data to update is not found");
         else
             employee.first_name = req.body.first_name;
             employee.last_name = req.body.last_name;
@@ -58,13 +58,23 @@ employeeRoutes.route('/update/:id').post(function(req, res) {
             employee.job_title = req.body.job_title;
 
             employee.save().then(employee => {
-                res.json('Employee updated!');
+                res.status(200).send('Employee updated!');
             })
             .catch(err => {
                 res.status(400).send("Update not possible");
             });
     });
 });
+
+employeeRoutes.route('/delete/:id').delete(function(req, res){
+    Employee.findByIdAndDelete(req.params.id, function(err, employee){
+        if (!employee)
+            res.status(404).send("data to delete is not found");
+        else
+            res.status(200).send('Employee has been deleted');
+
+    })
+})
 
 app.use('/employees', employeeRoutes);
 

@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CreateEmployee from "./components/create-employee.component";
 import EditEmployee from "./components/edit-employee.component";
 import Employees from "./components/employees.component";
+import DeleteEmployee from "./components/delete-employee.component";
 
 import logo from "./logo.svg";
 
@@ -34,6 +35,7 @@ class App extends Component {
           <Route path="/" exact component={Employees} />
           <Route path="/edit/:id" component={EditEmployee} />
           <Route path="/create" component={CreateEmployee} />
+          <Route path="/delete/:id" component={DeleteEmployee}></Route>
         </div>
       </Router>
     );
