@@ -13,7 +13,17 @@ let Employee = new Schema({
     },
     job_title: {
         type: String
+    },
+    location:{
+        type: String
+    },
+    email:{
+        type: String
+    },
+    phone_number:{
+        type: String
     }
+
 });
 
 module.exports = mongoose.model('Employee', Employee);
