@@ -12,6 +12,8 @@ const Employee = props => (
             <Link to={"/edit/"+props.employee._id}>Edit</Link>
             <br></br>
             <Link to={"/delete/"+props.employee._id}>Delete</Link>
+            <br></br>
+            <Link to={"/view/"+props.employee._id}>More Info</Link>
         </td>
     </tr>
 )
@@ -48,7 +50,6 @@ export default class Employees extends Component {
     }
 
     editEmployeList(){
-        console.log(this.state.sort_by)
         // determine to filter by department, job_title, or none
         const sorted_employees = this.state.sort_by.legnth === 0 ? this.state.employees : 
         (this.state.sort_by === 'department' ? this.state.employees.sort((a, b) => {
@@ -65,7 +66,7 @@ export default class Employees extends Component {
                     return 1;
                 return 0;
         }));
-        console.log(this.state.sort_by)
+
         // filter by name
         const filtered_name_employees = this.state.input_value.length === 0 ? sorted_employees : 
         sorted_employees.filter(employee => employee.last_name.toLowerCase().includes(this.state.input_value.toLowerCase()) || 

@@ -12,7 +12,10 @@ export default class DeleteEmployee extends Component {
             first_name: '',
             last_name: '',
             department: '',
-            job_title: ''
+            job_title: '',
+            location: '',
+            email: '',
+            phone_number: ''
         }
     }
 
@@ -23,7 +26,10 @@ export default class DeleteEmployee extends Component {
                     first_name: response.data.first_name,
                     last_name: response.data.last_name,
                     department: response.data.department,
-                    job_title: response.data.job_title
+                    job_title: response.data.job_title,
+                    location: response.data.location,
+                    email: response.data.email,
+                    phone_number: response.data.phone_number
                 })   
             })
             .catch(function (error) {
@@ -31,37 +37,11 @@ export default class DeleteEmployee extends Component {
             })
     }
 
-    // componentDidMount() {
-    //     // Simple DELETE request with axios
-    //     axios.delete('http://localhost:4000/employees/delete'+this.props.match.params.id)
-    //         .then(() => this.setState({ status: 'Delete successful' }));
-    // }
-
-    // onSubmit(e) {
-    //     e.preventDefault();
-    //     const obj = {
-    //         first_name: this.state.first_name,
-    //         last_name: this.state.last_name,
-    //         department: this.state.department,
-    //         job_title: this.state.job_title
-    //     };
-
-        
-    //     console.log(obj);
-    //     axios.post('http://localhost:4000/employees/delete/'+this.props.match.params.id, {obj})
-    //         .then(res => console.log(res.data));
-        
-    //     this.props.history.push('/');
-    // }
-
     deleteRow(data, e){  
         axios.delete('http://localhost:4000/employees/delete/'+this.props.match.params.id, data)  
           .then(res => {  
             console.log(res);  
             console.log(res.data);  
-        
-            // const posts = this.state.posts.filter(item => item.id !== id);  
-            // this.setState({ posts });  
           })  
           this.props.history.push('/');
       }  
@@ -70,7 +50,6 @@ export default class DeleteEmployee extends Component {
         return (
             <div>
                 <h3 align="center">Delete Employee</h3>
-                {/* <form onSubmit={this.onSubmit}> */}
                 <form>
                     <div className="form-group"> 
                         <label>First Name: </label>
@@ -130,6 +109,33 @@ export default class DeleteEmployee extends Component {
                                 type="text" 
                                 className="form-control"
                                 value={this.state.job_title}
+                                readOnly
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Location: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.location}
+                                readOnly
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Email Address: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.email}
+                                readOnly
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Phone Number: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.phone_number}
                                 readOnly
                                 />
                     </div>

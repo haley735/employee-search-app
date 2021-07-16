@@ -10,13 +10,19 @@ export default class CreateEmployee extends Component {
         this.onChangeLastName = this.onChangeLastName.bind(this);
         this.onChangeDepartment = this.onChangeDepartment.bind(this);
         this.onChangeJobTitle = this.onChangeJobTitle.bind(this);
+        this.onChangeLocation = this.onChangeLocation.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             first_name: '',
             last_name: '',
             department: '',
-            job_title: ''
+            job_title: '',
+            location: '',
+            email: '',
+            phone_number: ''
         }
     }
 
@@ -44,6 +50,24 @@ export default class CreateEmployee extends Component {
         });
     }
 
+    onChangeLocation(e){
+        this.setState({
+            location: e.target.value
+        });
+    }
+
+    onChangeEmail(e){
+        this.setState({
+            email: e.target.value
+        });
+    }
+
+    onChangePhoneNumber(e){
+        this.setState({
+            phone_number: e.target.value
+        });
+    }
+
     onSubmit(e) {
         e.preventDefault();
         
@@ -52,12 +76,18 @@ export default class CreateEmployee extends Component {
         console.log(`Employee Last Name: ${this.state.last_name}`);
         console.log(`Employee Department: ${this.state.department}`);
         console.log(`Employee Job Title: ${this.state.job_title}`);
+        console.log(`Employee Location: ${this.state.location}`);
+        console.log(`Employee Email: ${this.state.email}`);
+        console.log(`Employee Phone Number: ${this.state.phone_number}`);
 
         const newEmployee = {
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             department: this.state.department,
-            job_title: this.state.job_title
+            job_title: this.state.job_title,
+            location: this.state.location,
+            email: this.state.email,
+            phone_number: this.state.phone_number
         };
 
         axios.post('http://localhost:4000/employees/add', newEmployee)
@@ -67,7 +97,10 @@ export default class CreateEmployee extends Component {
             first_name: '',
             last_name: '',
             department: '',
-            job_title: ''
+            job_title: '',
+            location: '',
+            email: '',
+            phone_number: ''
         })
 
         this.props.history.push('/');
@@ -137,6 +170,33 @@ export default class CreateEmployee extends Component {
                                 className="form-control"
                                 value={this.state.job_title}
                                 onChange={this.onChangeJobTitle}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Location: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.location}
+                                onChange={this.onChangeLocation}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Email Address: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.email}
+                                onChange={this.onChangeEmail}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Phone Number: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.phone_number}
+                                onChange={this.onChangePhoneNumber}
                                 />
                     </div>
                     <div className="form-group">

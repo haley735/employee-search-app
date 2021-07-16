@@ -16,7 +16,10 @@ export default class EditEmployee extends Component {
             first_name: '',
             last_name: '',
             department: '',
-            job_title: ''
+            job_title: '',
+            location: '',
+            email: '',
+            phone_number: ''
         }
     }
 
@@ -27,7 +30,10 @@ export default class EditEmployee extends Component {
                     first_name: response.data.first_name,
                     last_name: response.data.last_name,
                     department: response.data.department,
-                    job_title: response.data.job_title
+                    job_title: response.data.job_title,
+                    location: response.data.location,
+                    email: response.data.email,
+                    phone_number: response.data.phone_number
                 })   
             })
             .catch(function (error) {
@@ -59,6 +65,24 @@ export default class EditEmployee extends Component {
         });
     }
 
+    onChangeLocation(e){
+        this.setState({
+            location: e.target.value
+        });
+    }
+
+    onChangeEmail(e){
+        this.setState({
+            email: e.target.value
+        });
+    }
+
+    onChangePhoneNumber(e){
+        this.setState({
+            email: e.target.value
+        });
+    }
+
     onSubmit(e) {
         e.preventDefault();
         const obj = {
@@ -70,7 +94,6 @@ export default class EditEmployee extends Component {
         console.log(obj);
         axios.post('http://localhost:4000/employees/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
-        
         this.props.history.push('/');
     }
 
@@ -140,8 +163,34 @@ export default class EditEmployee extends Component {
                                 onChange={this.onChangeJobTitle}
                                 />
                     </div>
+                    <div className="form-group">
+                        <label>Location: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.location}
+                                onChange={this.onChangeLocation}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Email Address: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.email}
+                                onChange={this.onChangeEmail}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Phone Number: </label>
+                        <input 
+                                type="text" 
+                                className="form-control"
+                                value={this.state.phone_number}
+                                onChange={this.onChangePhoneNumber}
+                                />
+                    </div>
                     <br />
-
                     <div className="form-group">
                         <input type="submit" value="Update Employee" className="btn btn-primary" />
                     </div>
