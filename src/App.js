@@ -7,6 +7,7 @@ import CreateEmployee from "./components/create-employee.component";
 import EditEmployee from "./components/edit-employee.component";
 import Employees from "./components/employees.component";
 import DeleteEmployee from "./components/delete-employee.component";
+import ViewEmployee from "./components/view-employee.component";
 
 import logo from "./logo.svg";
 
@@ -36,6 +37,7 @@ class App extends Component {
           <Route path="/edit/:id" component={EditEmployee} />
           <Route path="/create" component={CreateEmployee} />
           <Route path="/delete/:id" component={DeleteEmployee}></Route>
+          <Route path="/view/:id" component={ViewEmployee}></Route>
         </div>
       </Router>
     );
