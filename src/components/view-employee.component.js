@@ -41,50 +41,50 @@ export default class ViewEmployee extends Component {
             <div>
                 <h3>Employee Profile</h3>
                 <table className="table table-striped">
-                    <thead className="d-inline">
+                    <thead className="d-inline" style={{ height: 40.5 }}>
                         <tr>
-                            <th colspan="1">First Name</th>
+                            <th colSpan="1">First Name</th>
                         </tr>
-                        <tr>
-                            <th colspan="1">Last Name</th>
+                        <tr style={{ height: 40.5 }}>
+                            <th colSpan="1">Last Name</th>
                         </tr>
-                        <tr>
-                            <th colspan="1">Department</th>
+                        <tr style={{ height: 40.5 }}>
+                            <th colSpan="1">Department</th>
                         </tr>
-                        <tr>
-                            <th colspan="1">Job Title</th>
+                        <tr style={{ height: 40.5 }}> 
+                            <th colSpan="1">Job Title</th>
                         </tr>
-                        <tr>
-                            <th colspan="1">Location</th>
+                        <tr style={{ height: 40.5 }}>
+                            <th colSpan="1">Location</th>
                         </tr>
-                        <tr>
-                            <th colspan="1">Email</th>
+                        <tr style={{ height: 40.5 }}>
+                            <th colSpan="1">Email</th>
                         </tr>
-                        <tr>
-                            <th colspan="1">Phone</th>
+                        <tr style={{ height: 40.5 }}>
+                            <th colSpan="1">Phone</th>
                         </tr>
                     </thead>
-                    <tbody className="d-inline">
+                    <tbody className="d-inline" >
                         <tr>
-                            <td>{this.state.first_name}</td>
+                            <td style={{ height: 40.5 }}>{this.state.first_name}</td>
                         </tr>
                         <tr>
-                            <td>{this.state.last_name}</td>
+                            <td style={{ height: 40.5 }}>{this.state.last_name}</td>
                         </tr>
                         <tr>
-                            <td>{this.state.department}</td>
+                            <td style={{ height: 40.5 }}>{this.state.department}</td>
                         </tr>
                         <tr>
-                            <td>{this.state.job_title}</td>
+                            <td style={{ height: 40.5 }}>{this.state.job_title}</td>
                         </tr>
                         <tr>
-                            <td>{this.state.location}</td>
+                            <td style={{ height: 40.5 }}>{this.state.location}</td>
                         </tr>
                         <tr>
-                            <td>{this.state.email}</td>
+                            <td style={{ height: 40.5 }}>{this.state.email}</td>
                         </tr>
                         <tr>
-                            <td>{this.state.phone_number}</td>
+                            <td style={{ height: 40.5 }}>{this.state.phone_number}</td>
                         </tr>
                     </tbody>
                 </table>
