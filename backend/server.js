@@ -37,14 +37,29 @@ employeeRoutes.route('/:id').get(function(req, res) {
 });
 
 employeeRoutes.route('/add').post(function(req, res) {
-    let employee = new Employee(req.body);
-    employee.save()
-        .then(employee => {
-            res.status(200).json({'employee': 'employee added successfully'});
-        })
-        .catch(err => {
-            res.status(400).send('adding new employee failed');
-        });
+    // handle multiple entries through the api
+    // been using postman to fill more entries at a time
+    if (req.body.length > 1)
+        for(let i=0; i<req.body.length; i++){
+            let employee = new Employee(req.body[i]);
+            employee.save()
+                .then(employee => {
+                    res.status(200).json({'employee': 'employee added successfully'});
+                })
+                .catch(err => {
+                    res.status(400).send('adding new employee failed');
+                });
+        }
+    else{
+        let employee = new Employee(req.body);
+        employee.save()
+            .then(employee => {
+                res.status(200).json({'employee': 'employee added successfully'});
+            })
+            .catch(err => {
+                res.status(400).send('adding new employee failed');
+            });
+    }
 });
 
 employeeRoutes.route('/update/:id').post(function(req, res) {
@@ -56,6 +71,9 @@ employeeRoutes.route('/update/:id').post(function(req, res) {
             employee.last_name = req.body.last_name;
             employee.department = req.body.department;
             employee.job_title = req.body.job_title;
+            employee.location = req.body.location;
+            employee.email = req.body.email;
+            employee.phone_number = req.body.phone_number;
 
             employee.save().then(employee => {
                 res.status(200).send('Employee updated!');
